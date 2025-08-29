@@ -9,7 +9,7 @@ A floating, draggable, and resizable notepad component designed specifically for
 - 💾 **Auto-save** - Every keystroke is automatically saved
 - 📄 **Per-page notes** - Each route/page has its own separate notepad
 - 🔄 **Persistent** - Notes persist across browser sessions
-- 🎨 **Sticky note design** - Beautiful yellow sticky note appearance
+- 🎨 **Clean design** - Minimalistic and modern appearance
 - ⬇️ **Minimize/Maximize** - Collapse when not needed
 - ❌ **Show/Hide** - Close and reopen as needed
 - 🎯 **Position memory** - Remembers position and size per page
@@ -27,11 +27,12 @@ npm install vue-dev-notepad
 ```javascript
 // main.js
 import { createApp } from 'vue'
-import { DevNotepad } from 'vue-dev-notepad'
+import VueDevNotepad from 'vue-dev-notepad'
+import 'vue-dev-notepad/dist/style.css' // Import styles
 import App from './App.vue'
 
 const app = createApp(App)
-app.use(DevNotepad)
+app.use(VueDevNotepad)
 app.mount('#app')
 ```
 
@@ -59,6 +60,7 @@ Then use in any component:
 
 <script setup>
 import { DevNotepad } from 'vue-dev-notepad'
+import 'vue-dev-notepad/dist/style.css' // Import styles
 </script>
 ```
 
@@ -98,15 +100,16 @@ const clearNotes = () => {
 }
 
 const toggleNotepad = () => {
-  notepadRef.value.toggleMinimize()
+  notepadRef.value.toggleNotepad()
 }
 </script>
 ```
 
 Available methods:
-- `showNotepad()` - Show the notepad
-- `closeNotepad()` - Hide the notepad
-- `toggleMinimize()` - Toggle minimize state
+- `openNotepad()` - Show the full notepad
+- `closeNotepad()` - Collapse to button
+- `toggleNotepad()` - Toggle between full/collapsed
+- `toggleMinimize()` - Toggle minimize state (when open)
 - `clearNote()` - Clear the current note content
 
 ## 💡 How it Works
@@ -124,7 +127,7 @@ This means:
 
 ## 🎨 Styling
 
-The component comes with a beautiful sticky note design out of the box. If you need to customize the appearance, you can override the CSS classes:
+The component comes with a clean, minimalistic design out of the box. If you need to customize the appearance, you can override the CSS classes:
 
 ```css
 /* Custom styling example */
