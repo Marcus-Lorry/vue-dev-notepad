@@ -8,7 +8,8 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.js'),
       name: 'VueDevNotepad',
-      fileName: (format) => `index.${format}.js`
+      fileName: (format) => `index.${format}.js`,
+      formats: ['es', 'umd']
     },
     rollupOptions: {
       external: ['vue'],
@@ -17,6 +18,12 @@ export default defineConfig({
           vue: 'Vue'
         }
       }
-    }
+    },
+    cssCodeSplit: false,
+    sourcemap: false,
+    emptyOutDir: true
+  },
+  resolve: {
+    dedupe: ['vue']
   }
 })
