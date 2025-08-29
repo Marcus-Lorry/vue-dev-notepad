@@ -1,6 +1,7 @@
 <template>
-  <!-- Always visible - either full notepad or collapsed button -->
+  <!-- Only render in development by default -->
   <div
+    v-if="shouldRender"
     ref="notepadRef"
     class="floating-notepad"
     :class="{ 'collapsed': !isVisible, 'minimized': isMinimized }"
@@ -17,7 +18,7 @@
     <div
       v-if="!isVisible"
       class="collapsed-button"
-      @click="openNotepad"
+      @click="handleCollapsedClick"
       @mousedown="startDrag"
       title="Open Dev Notes"
     >
@@ -112,6 +113,10 @@ const props = defineProps({
   storagePrefix: {
     type: String,
     default: 'dev-notepad'
+  },
+  devOnly: {
+    type: Boolean,
+    default: true
   }
 })
 
@@ -137,6 +142,12 @@ const noteContent = ref('')
 const position = ref({ ...props.defaultPosition })
 const size = ref({ ...props.defaultSize })
 const zIndex = ref(1000)
+
+// Check if should render (dev only by default)
+const shouldRender = computed(() => {
+  if (!props.devOnly) return true
+  return process.env.NODE_ENV === 'development'
+})
 
 // Drag state
 const isDragging = ref(false)
@@ -211,6 +222,15 @@ const openNotepad = () => {
   isVisible.value = true
   isMinimized.value = false
   saveNoteData()
+}
+
+const handleCollapsedClick = (e) => {
+  // Only open if we weren't dragging
+  if (!isDragging.value) {
+    e.preventDefault()
+    e.stopPropagation()
+    openNotepad()
+  }
 }
 
 // Dragging

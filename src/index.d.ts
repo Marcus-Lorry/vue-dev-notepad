@@ -9,6 +9,7 @@ export interface DevNotepadProps {
   maxWidth?: number
   maxHeight?: number
   storagePrefix?: string
+  devOnly?: boolean
 }
 
 export interface DevNotepadMethods {

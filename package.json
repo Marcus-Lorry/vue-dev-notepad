@@ -1,19 +1,22 @@
 {
   "name": "vue-dev-notepad",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "A floating, draggable, resizable notepad component for Vue.js developers with per-page note persistence",
-  "types": "src/index.d.ts",
-  "main": "dist/index.umd.js",
-  "module": "dist/index.es.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "require": "./dist/index.umd.js",
+      "types": "./src/index.d.ts"
     },
     "./dist/style.css": "./dist/style.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/index.d.ts",
+    "README.md"
   ],
   "scripts": {
     "build": "vite build",
@@ -52,6 +55,5 @@
   "bugs": {
     "url": "https://github.com/Marcus-Lorry/vue-dev-notepad/issues"
   },
-  "homepage": "https://github.com/Marcus-Lorry/vue-dev-notepad#readme",
-  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+  "homepage": "https://github.com/Marcus-Lorry/vue-dev-notepad#readme"
 }

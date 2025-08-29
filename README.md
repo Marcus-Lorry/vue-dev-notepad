@@ -75,6 +75,30 @@ import 'vue-dev-notepad/dist/style.css' // Import styles
 | `maxWidth` | Number | `600` | Maximum width constraint |
 | `maxHeight` | Number | `500` | Maximum height constraint |
 | `storagePrefix` | String | `'dev-notepad'` | localStorage key prefix |
+| `devOnly` | Boolean | `true` | Only show in development environment |
+
+## 🚀 Production vs Development
+
+By default, the notepad **only appears in development** and is automatically hidden in production builds. This prevents your notes from showing to end users.
+
+### Default Behavior (Recommended)
+```vue
+<template>
+  <!-- Only visible during development -->
+  <DevNotepad />
+</template>
+```
+
+### Show in Production (if needed)
+```vue
+<template>
+  <!-- Visible in both development and production -->
+  <DevNotepad :dev-only="false" />
+</template>
+```
+
+### Environment Detection
+The component uses `process.env.NODE_ENV === 'development'` to determine when to show the notepad.
 
 ## 🎮 Methods
 
