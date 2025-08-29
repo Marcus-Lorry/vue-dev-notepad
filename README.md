@@ -27,11 +27,11 @@ npm install vue-dev-notepad
 ```javascript
 // main.js
 import { createApp } from 'vue'
-import VueDevNotepad from 'vue-dev-notepad'
+import { DevNotepad } from 'vue-dev-notepad'
 import App from './App.vue'
 
 const app = createApp(App)
-app.use(VueDevNotepad)
+app.use(DevNotepad)
 app.mount('#app')
 ```
 
