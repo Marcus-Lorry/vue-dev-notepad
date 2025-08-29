@@ -1,6 +1,6 @@
 {
   "name": "vue-dev-notepad",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A floating, draggable, resizable notepad component for Vue.js developers with per-page note persistence",
   "types": "src/index.d.ts",
   "main": "dist/index.umd.js",
